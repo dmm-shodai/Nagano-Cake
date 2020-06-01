@@ -1,0 +1,2 @@
+module Member::AddressHelper
+end
