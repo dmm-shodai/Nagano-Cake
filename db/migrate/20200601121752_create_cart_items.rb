@@ -1,8 +1,11 @@
 class CreateCartItems < ActiveRecord::Migration[5.2]
-  def change
-    create_table :cart_items do |t|
+	def change
+		create_table :cart_items do |t|
+			t.integer :user_id
+			t.integer :item_id
+			t.integer :number
 
-      t.timestamps
-    end
-  end
+			t.timestamps
+		end
+	end
 end
