@@ -1,6 +1,8 @@
 class Member::AddressesController < ApplicationController
 
 	def index
+		@address = Address.new
+		@addressess = Addresses.all
 	end
 
 	def create
