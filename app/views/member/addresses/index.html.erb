@@ -1,50 +1,52 @@
 <!--エラーメッセージ -->
 	<% if @address.errors.any? %>
-	<div class="error_explanation" >
+	  <div class="error_explanation" >
 		<h2><%= @address.errors.count %>errors prohibited this address from being saved:</h2>
 		<ul>
 			<% @address.errors.full_messages.each do |address| %>
 			<li><%= address %></li>
 			<% end %>
 		</ul>
-	</div>
+	  </div>
 	<% end %>
 <!-- エラーメッセージ -->
 <!-- サクセスメッセージ：後で消していい -->
 <p id="notice"><%= notice %></p>
 <!-- サクセスメッセージ -->
 
-<div class="row">
-	<div class="col-xs-3">
-		<h2>配送先登録/一覧</h2>
-		<%= render 'member/addresses/form', address: @address %>
-		<!-- 一覧 -->
-		<table class="table table-hover table-inverse" border="1" style="border-collapse: collapse">
-			<thead>
-				<tr>
-					<th>郵便番号</th>
-					<th colspan="4">住所</th>
-					<th>宛名</th>
-					<th colspan="2"></th>
-				</tr>
-			</thead>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
 
-			<tbody>
-				<% @addresses.each do |addresses| %>
-				<tr>
-					<td><%= addresses.postal_code %></td>
-					<td colspan="4">
-						<%= addresses.address %>
-					</td>
-					<td>
-						<%= addresses.address_name %>
-					</td>
-					<td><%= link_to"編集する",edit_address_path(addresses.id),class: "btn-sm btn-success address_#{addresses.id}" %><%= link_to "削除する",address_path(addresses.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_address_#{addresses.id}" %>
-					</td>
-					<% end %>
-				</tr>
-			</tbody>
-		</table>
+         <div class="row">
+	      <div class="col-xs-3">
+		   <h3>配送先登録/一覧</h3>
+		   <%= render 'member/addresses/form', address: @address %>
 		<!-- 一覧 -->
-	</div>
+		    <table class="table table-hover table-inverse" border="1" style="border-collapse: collapse">
+			  <thead>
+				<tr>
+				  <th>郵便番号</th>
+				  <th colspan="4">住所</th>
+				  <th>宛名</th>
+			      <th colspan="2"></th>
+				</tr>
+			  </thead>
+
+			 <tbody>
+			  <% @addresses.each do |addresses| %>
+				<tr>
+				  <td><%= addresses.postal_code %></td>
+				  <td colspan="4"><%= addresses.address %></td>
+				  <td><%= addresses.address_name %></td>
+				  <td><%= link_to"編集する",edit_address_path(addresses.id),class: "btn-sm btn-primary address_#{addresses.id}" %><%= link_to "削除する",address_path(addresses.id), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, class: "btn-sm btn-danger destroy_address_#{addresses.id}" %></td>
+			  <% end %>
+				</tr>
+			 </tbody>
+		    </table>
+		<!-- 一覧 -->
+	      </div>
+         </div>
+       </div>
+    </div>
 </div>
