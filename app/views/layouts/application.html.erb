@@ -10,6 +10,34 @@
   </head>
 
   <body>
+  <header>
+    <div class="container">
+      <div class="row">
+          <nav class="col-xs-3 site_logo">
+            <h1>NaganoCake</h1>
+          </nav>
+          <nav class="col-xs-9 site_nav">
+            <ul class="list-unstyled list-inline">
+            <% if member_signed_in? %>
+              <p>ようこそ<%= current_user.name %>さん</p>
+              <li><%= link_to 'マイページ', '#' %></li>
+              <li><%= link_to '商品一覧', '#' %></li>
+              <li><%= link_to 'カート', '#' %></li>
+              <li><%= link_to 'ログアウト', '#' %></li>
+            <% else %>
+              <li><%= link_to '商品一覧', '#' %></li>
+              <li><%= link_to '新規登録', '#' %></li>
+              <li><%= link_to 'ログイン', '#' %></li>
+            <% end %>
+            </ul>
+          </nav>
+      </div>
+    </div>
+  </header>
+  <main>
     <%= yield %>
+  </main>
+  <footer>
+  </footer>
   </body>
 </html>
