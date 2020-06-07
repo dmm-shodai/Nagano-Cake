@@ -16,6 +16,8 @@ scope module: 'member' do
 end
 
 namespace :admin do
+	resources :genres,only: [:index,:create,:edit,:update]
+	resources :items,only: [:index,:new,:create,:show,:edit,:update]
 end
 end
 
