@@ -10,7 +10,11 @@ devise_for :members, controllers: {
   registrations: 'members/registrations'
 }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-scope :member do
+
+scope module: 'member' do
+	resources :addresses, only:[:index, :create, :edit, :update, :destroy]
+	resources :members, only: [:show]
+	root :to => 'members#top'
 end
 namespace :admin do
 end
