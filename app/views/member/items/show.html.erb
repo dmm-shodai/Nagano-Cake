@@ -1,0 +1,38 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h2>ジャンル検索</h2>
+			<ul>
+				<li><%= @genres.each do |genre| %></li>
+				<% end %>
+			</ul>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-3">
+				<%= attachment_image_tag @item, :item_image, :fill, 100, 100, format: 'jpeg' %>
+			</div>
+			<div class="col-xs-6">
+				<ul>
+					<li><%= @item.item_name %></li>
+					<li><%= @item.item_profile %></li>
+					<li><%= @item.price %></li>
+					<!-- priceは税抜き価格 -->
+				</ul>
+				<ul>
+					<%= form_for(@cart_item) do |f| %>
+					<!-- 必要だったらURLをいれる -->
+					<%= f.hidden_field :item_id, :value => @item.id %>
+					<li><%= f.label :number, "数量" %></li>
+					<li><%= f.select :number, [1,2,3,4,5,6,7,8,9,10] %></li>
+					<li><%= f.submit "カートに入れる",class: "btn btn-primary" %></li>
+					<% end %>
+					<!-- form_forの@numberをきく -->
+					<!-- cart_item_#{cart_items.id}"の部分を聞く　消しても問題なく動く -->
+					<!-- branch 途中切り替えでpullして大丈夫か聞く -->
+					<!-- hidden_field を使うと実際に入力をしなくても裏で値を渡してくれる機能 -->
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>

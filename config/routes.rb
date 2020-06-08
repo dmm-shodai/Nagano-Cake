@@ -13,7 +13,11 @@ devise_for :members, controllers: {
 
 scope module: 'member' do
 	resources :addresses, only:[:index, :create, :edit, :update, :destroy]
+	resources :items, only:[:index, :show]
+	resources :cart_items, only:[:create, :update, :index, :destroy]
+	delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
 end
+
 
 namespace :admin do
 end
