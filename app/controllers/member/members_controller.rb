@@ -16,7 +16,7 @@ class Member::MembersController < ApplicationController
 	end
 
 	private
-	def member_paramus
-		params.require(:member).permit(:)
+	def member_params
+		params.require(:member).permit(:surname, :name, :kana_surname, :kana_name, :postal_code, :address, :phone, :quit)
 	end
 end
