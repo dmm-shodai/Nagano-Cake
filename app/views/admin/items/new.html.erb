@@ -6,7 +6,7 @@
      <%= form_for(@item_new, url:admin_items_path) do |f| %>
 	 <%= f.label :商品画像 %>
 	 <%= f.attachment_field :item_image %>
-    
+    </div>
 	<div class="col-xs-9">
 	 <div>	<%= f.label :商品名 %>
 		<%= f.text_field :item_name %>
