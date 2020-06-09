@@ -5,27 +5,30 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-5"></div>
       <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
-      <div class="field">
-        <%= f.label :名前 %>
-        <%= f.label :"(姓)" %>
-        <%= f.label :"(名)" %> 
+      <div class="form">
+        (<%= f.label :姓 %>)
         <%= f.text_field :surname, autofocus: true, autocomplete: "surname" %>
+      </div>
+
+      <div class="form">
+        <%= f.label :名 %>
         <%= f.text_field :name, autocomplete: "name" %>
       </div>
 
-      <div class="field">
-        <%= f.label :フリガナ %>
-        <%= f.label :"(セイ)" %>
-        <%= f.label :"(メイ)" %>
+      <div class="form">
+        <%= f.label :セイ %>
         <%= f.text_field :kana_surname, autocomplete: "kana_surname" %>
-        <%= f.text_field :name, autocomplete: "kana_name" %>
       </div>
 
-      <div class="field">
+      <div class="form">
+        <%= f.label :メイ %>
+        <%= f.text_field :kana_name, autocomplete: "kana_name" %>
+      </div>
+
+      <div class="form">
         <%= f.label :メールアドレス %>
         <%= f.email_field :email, autocomplete: "email" %>
       </div>

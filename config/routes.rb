@@ -21,7 +21,7 @@ scope module: 'member' do
   post '/orders/confirm' => 'orders#confirm'
   get '/orders/thanks' => 'orders#thanks'
 
-	resources :members, only: [:show]
+	resources :members, only: [:show, :edit, :destroy, :update]
 	root :to => 'members#top'
 end
 
