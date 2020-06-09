@@ -13,12 +13,16 @@ devise_for :members, controllers: {
 
 scope module: 'member' do
 	resources :addresses, only:[:index, :create, :edit, :update, :destroy]
+
 	resources :items, only:[:index, :show]
   delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
 	resources :cart_items, only:[:create, :update, :index, :destroy]
   resources :orders, only:[:new, :index, :show, :create]
   post '/orders/confirm' => 'orders#confirm'
   get '/orders/thanks' => 'orders#thanks'
+
+	resources :members, only: [:show]
+	root :to => 'members#top'
 end
 
 

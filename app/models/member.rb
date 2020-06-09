@@ -12,4 +12,9 @@ class Member < ApplicationRecord
   end
   # ヘルパーメゾット：exists? true or folseで（）の中の値が左辺のcart_itemsの中にあるか判断する
 
+
+
+  acts_as_paranoid
+
+
 end

@@ -2,7 +2,7 @@ class Member::CartItemsController < ApplicationController
 
 	def create
 		@cart_item = CartItem.new(cart_item_params)
-		@cart_item.user_id = current_member.id
+		@cart_item.member_id = current_member.id
 		@cart_item.save
 		# if文で分岐させる
 		redirect_to cart_items_path
@@ -16,7 +16,7 @@ class Member::CartItemsController < ApplicationController
 
 	def index
 		@cart_item = CartItem.new
-		@cart_items = CartItem.where(user_id: current_member)
+		@cart_items = CartItem.where(member_id: current_member)
 		@total_price = 0
 		@cart_items.each do |cart_item|
 			@total_price += cart_item.item.price * cart_item.number
@@ -30,14 +30,14 @@ class Member::CartItemsController < ApplicationController
 	end
 
 	def destroy_all
-		@cart_items = CartItem.where(user_id: current_member)
+		@cart_items = CartItem.where(member_id: current_member)
 		@cart_items.destroy_all
 		redirect_to cart_items_path
 	end
 
 	private
 	def cart_item_params
-		params.require(:cart_item).permit(:item_id, :number, :user_id)
+		params.require(:cart_item).permit(:item_id, :number, :member_id)
 	end
 
 end

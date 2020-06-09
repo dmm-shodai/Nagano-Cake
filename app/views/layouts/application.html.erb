@@ -10,25 +10,25 @@
   </head>
 
   <body>
-  <header>
+  <header class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
       <div class="row">
-          <nav class="col-xs-3 site_logo">
+          <nav class="site-logo nav navbar-nav navbar-left navbar-brand">
             <h1>NaganoCake</h1>
           </nav>
-          <nav class="col-xs-9 site_nav">
-            <ul class="list-unstyled list-inline">
+          <nav class="site-nav">
+            <ul class="nav navbar-nav navbar-right">
             <% if member_signed_in? %>
               <p>ようこそ<%= current_member.name %>さん</p>
-              <!-- 一時的にuserをmemberに変更　user_idカラムをマージしてないため -->
+              <!-- 一時的にuserをmemberに変更　member_idカラムをマージしてないため -->
               <li><%= link_to 'マイページ', '#' %></li>
               <li><%= link_to '商品一覧', '#' %></li>
               <li><%= link_to 'カート', '#' %></li>
               <li><%= link_to 'ログアウト', '#' %></li>
             <% else %>
               <li><%= link_to '商品一覧', '#' %></li>
-              <li><%= link_to '新規登録', '#' %></li>
-              <li><%= link_to 'ログイン', '#' %></li>
+              <li><%= link_to '新規登録', new_member_registration_path %></li>
+              <li><%= link_to 'ログイン', new_member_session_path %></li>
             <% end %>
             </ul>
           </nav>
