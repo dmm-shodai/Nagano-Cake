@@ -11,6 +11,7 @@ class Member < ApplicationRecord
   	cart_items.exists?(item_id: item.id)
   end
   # ヘルパーメゾット：exists? true or folseで（）の中の値が左辺のcart_itemsの中にあるか判断する
+  # item show.html.erbにてカートに入れるかどうかの判断で使用　0609minowa
 
 
 
