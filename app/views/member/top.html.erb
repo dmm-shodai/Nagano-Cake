@@ -21,11 +21,11 @@
 				<div class="items">
 					<%= @items.each do |item| %>
 					<!-- <%= attachment_image_tag item, : %> -->
-					<p><%= item.name %></p>
+					<p><%= item.item_name %></p>
 					<p><%= item.price %></p>
 				</div>
 				<%= link_to 'もっと見る', items_path %>
 			</div>
 		</div>
-	</div>	
+	</div>
 </div>

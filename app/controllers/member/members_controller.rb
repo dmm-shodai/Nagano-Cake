@@ -1,6 +1,6 @@
 class Member::MembersController < ApplicationController
 	def top
-		@items = Items.all
+		@items = Item.all
 	end
 
 	def show
@@ -13,7 +13,7 @@ class Member::MembersController < ApplicationController
 	def update
 		@member = current_member
 		@member.update
-		redirect_to 
+		redirect_to
 	end
 
 	def hide
