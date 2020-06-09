@@ -19,7 +19,8 @@
           <nav class="col-xs-9 site_nav">
             <ul class="list-unstyled list-inline">
             <% if member_signed_in? %>
-              <p>ようこそ<%= current_user.name %>さん</p>
+              <p>ようこそ<%= current_member.name %>さん</p>
+              <!-- 一時的にuserをmemberに変更　user_idカラムをマージしてないため -->
               <li><%= link_to 'マイページ', '#' %></li>
               <li><%= link_to '商品一覧', '#' %></li>
               <li><%= link_to 'カート', '#' %></li>

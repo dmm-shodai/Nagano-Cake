@@ -1,0 +1,38 @@
+<div class = "container">
+  <div class = "row">
+	<div class="col-xs-3">
+     <h3>商品新規登録</h3>
+
+     <%= form_for(@item_new, url:admin_items_path) do |f| %>
+	 <%= f.label :商品画像 %>
+	 <%= f.attachment_field :item_image %>
+    </div>
+	<div class="col-xs-9">
+	 <div>	<%= f.label :商品名 %>
+		<%= f.text_field :item_name %>
+	</div>
+
+	 <div class="field row">
+		<%= f.label :商品説明 %> 
+		<%= f.text_area :item_profile %>
+	 </div>
+	 <div class="field row">
+　　　　　<%= f.label :ジャンル %>
+	 　　<%= f.collection_select(:genre_id, Genre.all, :id, :genre_name) %>
+     </div>
+     <div class="field row">
+     	<%= f.label :税抜き価格 %>
+     	<%= f.text_field :price %>
+     </div>
+     <div class="field row">
+　　　　　<%= f.label :販売ステータス %>
+	 　　<%= f.select :sale_status, [["販売中", true], ["販売停止中", false]] %>
+     </div>
+
+	 <div class="actions row">
+		<%= f.submit %>
+	 </div>
+    </div>
+    <% end %>
+ </div>
+</div>

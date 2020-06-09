@@ -8,7 +8,7 @@ class Member::ItemsController < ApplicationController
 	def show
 		@genres = Genre.all
 		@item = Item.find(params[:id])
-		@cart_item = Cart_item.new
+		@cart_item = CartItem.new
 	end
 
 	private

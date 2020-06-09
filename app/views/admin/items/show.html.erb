@@ -1,0 +1,22 @@
+<div class = "container">
+  <div class = "row">
+  	商品詳細ページ
+	<div class="col-xs-3">
+      <%= attachment_image_tag @item, :item_image, :fill, 100, 100, fallback: "download.jpg"%><br>
+    </div>
+    <div class="col-xs-9">
+      商品名   <%= @item.item_name %><br>
+      商品説明   <%= @item.item_profile %><br>
+      ジャンル   <%= @item.genre.genre_name %><br>
+      税込価格(税抜き)   <%= (@item.price * 1.1r).to_i %>
+      (<%= @item.price %>)<br>
+      販売ステータス<% if @item.sale_status %>
+      販売中
+      <% else %>
+      販売停止中
+      <% end %>
+      
+    </div>
+  </div>
+</div>
+ 

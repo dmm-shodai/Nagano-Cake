@@ -19,19 +19,20 @@
 					<li><%= @item.price %></li>
 					<!-- priceは税抜き価格 -->
 				</ul>
-				<ul>
-					<%= form_for(@cart_item) do |f| %>
-					<!-- 必要だったらURLをいれる -->
-					<%= f.hidden_field :item_id, :value => @item.id %>
-					<li><%= f.label :number, "数量" %></li>
-					<li><%= f.select :number, [1,2,3,4,5,6,7,8,9,10] %></li>
-					<li><%= f.submit "カートに入れる",class: "btn btn-primary" %></li>
+
+					<% unless current_member.exist_items?(@item) %>
+						 <ul>
+							<%= form_for(@cart_item) do |f| %>
+							<%= f.hidden_field :item_id, :value => @item.id %>
+							<li><%= f.label :number, "数量" %></li>
+							<li><%= f.select :number, [1,2,3,4,5,6,7,8,9,10] %></li>
+							<li><%= f.submit "カートに入れる",class: "btn btn-primary" %></li>
+							<% end %>
+						 </ul>
+				    <% else %>
+				    <P>既にカートにあります。</P>
 					<% end %>
-					<!-- form_forの@numberをきく -->
-					<!-- cart_item_#{cart_items.id}"の部分を聞く　消しても問題なく動く -->
-					<!-- branch 途中切り替えでpullして大丈夫か聞く -->
-					<!-- hidden_field を使うと実際に入力をしなくても裏で値を渡してくれる機能 -->
-				</ul>
+				<div><%= link_to"一覧へ戻る",items_path, class: "btn-sm btn-success" %></div>
 			</div>
 		</div>
 	</div>
