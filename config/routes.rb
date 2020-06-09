@@ -13,9 +13,17 @@ devise_for :members, controllers: {
 
 scope module: 'member' do
 	resources :addresses, only:[:index, :create, :edit, :update, :destroy]
+
 	resources :members, only: [:show]
 	root :to => 'members#top'
+
 end
+
 namespace :admin do
+	resources :genres,only: [:index,:create,:edit,:update]
+	resources :items,only: [:index,:new,:create,:show,:edit,:update]
 end
 end
+
+
+# rails ルーティング　controller 検索

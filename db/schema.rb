@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+
 ActiveRecord::Schema.define(version: 2020_06_07_092655) do
+
 
   create_table "addresses", force: :cascade do |t|
     t.integer "member_id"
@@ -43,7 +45,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_092655) do
   end
 
   create_table "genres", force: :cascade do |t|
-    t.integer "genre_name"
+    t.string "genre_name"
     t.boolean "genre_status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -55,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_06_07_092655) do
     t.integer "price"
     t.boolean "sale_status"
     t.string "item_profile"
-    t.integer "item_image_id"
+    t.string "item_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

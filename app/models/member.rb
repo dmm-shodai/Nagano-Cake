@@ -6,5 +6,7 @@ class Member < ApplicationRecord
 
   has_many :addresses
 
+
   acts_as_paranoid
+
 end
