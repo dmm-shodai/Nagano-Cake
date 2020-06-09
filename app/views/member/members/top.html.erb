@@ -1,1 +1,27 @@
-<!-- test -->
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<!-- レンダーでジャンル検索の部分テンプレート -->
+		</div>
+		<div class="col-xs-9">
+			<div class="infomation-box text-center">
+				<p>ようこそ、NaganoCakeへ！<br>
+					このサイトは、ケーキ販売のECサイトになります。<br>
+					会員でない方も商品の閲覧はできますが、<br>
+					購入には会員登録が必要にあります。
+				</p>
+			</div>
+			<div class="items-box">
+				<h1>オススメ商品</h1>
+				<div class="items">
+					<%= @items.each do |item| %>
+						<%= attachment_image_tag item, :item_image, size: "50x70", fallback: "no_image.jpg" %>
+						<p><%= item.name %></p>
+						<p><%= item.price %></p>
+					<% end %>
+				</div>
+				<%= link_to 'もっと見る', items_path %>
+			</div>
+		</div>
+	</div>	
+</div>

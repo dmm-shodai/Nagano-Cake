@@ -5,4 +5,8 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :addresses
+
+
+  acts_as_paranoid
+
 end

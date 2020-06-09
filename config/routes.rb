@@ -13,6 +13,10 @@ devise_for :members, controllers: {
 
 scope module: 'member' do
 	resources :addresses, only:[:index, :create, :edit, :update, :destroy]
+
+	resources :members, only: [:show]
+	root :to => 'members#top'
+
 end
 
 namespace :admin do
