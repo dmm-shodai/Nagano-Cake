@@ -1,6 +1,6 @@
 class Member::MembersController < ApplicationController
 	def top
-		@items = Items.all
+		@items = Item.all
 	end
 
 	def show
