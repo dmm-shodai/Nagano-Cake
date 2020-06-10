@@ -1,0 +1,56 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h3>注文情報入力</h3>
+			<%= form_with(model: @order, url: orders_confirm_path, local: true) do |f| %>
+
+			<div class="pay">
+				<h4><strong>支払い方法</strong></h4>
+				<div>
+				<label>
+					<%= f.radio_button :pay, "クレジットカード" %>クレジットカード
+				</label><br />
+			    </div>
+
+			    <div>
+				<label>
+					<%= f.radio_button :pay, "銀行振込" %>銀行振込
+				</label>
+			    </div>
+			</div>
+
+			<div class="address">
+				<h4><strong>お届け先</strong></h4>
+				<div>
+				<label>
+					<%= f.radio_button :add, "ご自身の住所" %>ご自身の住所
+					<p><%= current_member.postal_code %><%= current_member.address %></p>
+					<P><%= current_member.surname %><%= current_member.name %></P>
+				</label><br />
+			    </div>
+
+			    <div>
+				<label>
+					<%= f.radio_button :add, "登録済み住所からの選択" %>登録済み住所からの選択
+				</label><br />
+				<%= f.collection_select :address, current_member.addresses, :id, :full_address %>
+				</div>
+
+			    <div>
+				<label>
+					<%= f.radio_button :add, "新しいお届け先" %>新しいお届け先
+				</label><br />
+				<%= render 'member/orders/newaddress', address: @address %>
+			    </div>
+
+			    <div class="row">
+				<%= f.submit "確認画面へ進む", class: "btn-sm btn-primary" %>
+			</div>
+			<% end %>
+
+			</div>
+
+
+		</div>
+	</div>
+</div>

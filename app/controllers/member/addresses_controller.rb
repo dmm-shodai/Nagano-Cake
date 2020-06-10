@@ -5,14 +5,15 @@ class Member::AddressesController < ApplicationController
 
 	def index
 		@address = Address.new
-		@addresses = Address.all
+		@addresses = current_member.addresses
 		# @addressedit = Address.find(params[:id])
 	end
 
 	def create
 		@address = Address.new(address_params)
+		@address.member_id = current_member.id
 		if @address.save
-		   redirect_to addresses_path(@address), notice: "successfully created Address!"
+		   redirect_to addresses_path, notice: "successfully created Address!"
 	    else
 	    	@addresses = Address.all
 	    	render :index
@@ -41,7 +42,7 @@ class Member::AddressesController < ApplicationController
 	private
 
   def address_params
-  	params.require(:address).permit(:postal_code, :address, :address_name)
+  	params.require(:address).permit(:postal_code, :address, :address_name, :member_id)
   end
 
 end

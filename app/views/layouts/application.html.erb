@@ -21,11 +21,11 @@
             <% if member_signed_in? %>
               <p>ようこそ<%= current_member.name %>さん</p>
               <li><%= link_to 'マイページ', member_path(current_member) %></li>
-              <li><%= link_to '商品一覧', '#' %></li>
-              <li><%= link_to 'カート', '#' %></li>
-              <li><%= link_to 'ログアウト', destroy_member_session_path, method: :destroy %></li>
+              <li><%= link_to '商品一覧', items_path %></li>
+              <li><%= link_to 'カート', cart_items_path %></li>
+              <li><%= link_to 'ログアウト',  destroy_member_session_path, method: :delete %></li>
             <% else %>
-              <li><%= link_to '商品一覧', '#' %></li>
+              <li><%= link_to '商品一覧', items_path %></li>
               <li><%= link_to '新規登録', new_member_registration_path %></li>
               <li><%= link_to 'ログイン', new_member_session_path %></li>
             <% end %>

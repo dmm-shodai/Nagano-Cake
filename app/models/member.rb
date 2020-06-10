@@ -6,6 +6,7 @@ class Member < ApplicationRecord
 
   has_many :addresses
   has_many :cart_items
+  has_many :orders
 
   def exist_items?(item)
   	cart_items.exists?(item_id: item.id)

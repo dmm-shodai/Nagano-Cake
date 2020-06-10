@@ -1,8 +1,13 @@
 class Address < ApplicationRecord
-	belongs_to :member,optional: true
-	# optional: trueはあとで抜く
+	belongs_to :member
+
 
 	validates :postal_code, presence: true,length: {is: 7 }
 	validates :address, presence: true
 	validates :address_name, presence: true
+
+	# 住所＋郵便番号＋氏名　つなげるメゾットを作成する
+	def full_address
+		self.postal_code + self.address + self.address_name
+	end
 end

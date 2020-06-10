@@ -1,15 +1,18 @@
 <div class="container">
 	<div class="row">
-			<div class="col-xs-3">
+			<div class="col-xs-4">
 				<h2>ジャンル検索</h2>
 				<ul>
-				 <li><%= @genres.each do |genre| %></li>
-				 <% end %>
-				</ul>
+				<% @genres.each do |genre| %>
+				<li>
+					<%= genre.genre_name %>
+				</li>
+				<% end %>
+			</ul>
 			</div>
 
 　　　　　　<div class="row">
-			<div class="col-xs-9">
+			<div class="col-xs-8">
 				<h2>商品一覧</h2><p>(全<%= @items.count %>件)</p>
 				<div class="item">
 					<div class="itemlist">
