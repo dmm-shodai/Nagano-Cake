@@ -20,6 +20,9 @@
             <ul class="nav navbar-nav navbar-right">
             <% if member_signed_in? %>
               <p>ようこそ<%= current_member.name %>さん</p>
+
+              <!-- 一時的にuserをmemberに変更　member_idカラムをマージしてないため -->
+
               <li><%= link_to 'マイページ', '#' %></li>
               <li><%= link_to '商品一覧', '#' %></li>
               <li><%= link_to 'カート', '#' %></li>

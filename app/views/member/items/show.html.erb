@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<h2>ジャンル検索</h2>
+			<ul>
+				<li><%= @genres.each do |genre| %></li>
+				<% end %>
+			</ul>
+		</div>
+
+		<div class="row">
+			<div class="col-xs-3">
+				<%= attachment_image_tag @item, :item_image, :fill, 100, 100, format: 'jpeg' %>
+			</div>
+			<div class="col-xs-6">
+				<ul>
+					<li><%= @item.item_name %></li>
+					<li><%= @item.item_profile %></li>
+					<li><%= @item.price %></li>
+					<!-- priceは税抜き価格 -->
+				</ul>
+
+					<% unless current_member.exist_items?(@item) %>
+						 <ul>
+							<%= form_for(@cart_item) do |f| %>
+							<%= f.hidden_field :item_id, :value => @item.id %>
+							<li><%= f.label :number, "数量" %></li>
+							<li><%= f.select :number, [1,2,3,4,5,6,7,8,9,10] %></li>
+							<li><%= f.submit "カートに入れる",class: "btn btn-primary" %></li>
+							<% end %>
+						 </ul>
+				    <% else %>
+				    <P>既にカートにあります。</P>
+					<% end %>
+				<div><%= link_to"一覧へ戻る",items_path, class: "btn-sm btn-success" %></div>
+			</div>
+		</div>
+	</div>
+</div>

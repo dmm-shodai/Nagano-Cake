@@ -1,4 +1,20 @@
-会員一覧ページ
-<% @members.each do  |member| %>
-<%= member.name %>	
-<% end %>
+会員一覧ページ<br>
+<table class = 'table'>
+ <thead>
+  <tr>
+   <th>会員ID</th>
+   <th>氏名</th>
+   <th>メールアドレス</th>
+   <th>ステータス</th>
+  </tr>
+ </thead>
+ <tbody>
+  <% @members.each do  |member| %>
+  <tr>
+   <td><%= member.id %></td>
+   <td><%= member.surname %><%= member.name %></td>
+   <td><%= member.email %></td>
+   <td><%= member.quit %></td></tr>	
+  <% end %>
+ </tbody>
+</table>

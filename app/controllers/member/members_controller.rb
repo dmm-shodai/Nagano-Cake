@@ -13,7 +13,7 @@ class Member::MembersController < ApplicationController
 	def update
 		@member = current_member
 		@member.update
-		redirect_to 
+		redirect_to
 	end
 
 	def hide
