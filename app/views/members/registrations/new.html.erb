@@ -14,23 +14,38 @@
       </div>
 
       <div class="form">
-        <%= f.label :名 %>
+        (<%= f.label :名 %>)
         <%= f.text_field :name, autocomplete: "name" %>
       </div>
 
       <div class="form">
-        <%= f.label :セイ %>
+        (<%= f.label :セイ %>)
         <%= f.text_field :kana_surname, autocomplete: "kana_surname" %>
       </div>
 
       <div class="form">
-        <%= f.label :メイ %>
+        (<%= f.label :メイ %>)
         <%= f.text_field :kana_name, autocomplete: "kana_name" %>
       </div>
 
       <div class="form">
         <%= f.label :メールアドレス %>
         <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+
+      <div class="form">
+        <%= f.label :郵便番号（ハイフンなし） %>
+        <%= f.text_field :postal_code, autofocus: "postal_code" %>
+      </div>
+
+      <div class="form">
+        <%= f.label :住所 %>
+        <%= f.text_field :address, autofocus: "address" %>
+      </div>
+
+      <div class="form">
+        <%= f.label :電話番号（ハイフンなし） %>
+        <%= f.text_field :phone, autofocus: "phone" %>
       </div>
 
       <div class="field">
@@ -51,6 +66,7 @@
       <div class="text-center">
         <%= f.submit "新規登録", class: "btn btn-success" %>
       </div>
+    <% end %>
   </div>
 
   <br>
@@ -62,5 +78,4 @@
     </div>
   </div>
 </div>
-<% end %>
 

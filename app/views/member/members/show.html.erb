@@ -2,7 +2,7 @@
 	<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">マイページ</h4>
 
 	<br>
-	<h4>登録情報</h4>
+	<h5>登録情報</h5>
 	<%= link_to '登録情報編集', edit_member_path(current_member), class:"btn btn-info" %>
 	<%= link_to 'パスワード変更', edit_member_registration_path(current_member), class:"btn btn-success" %>
 
@@ -29,17 +29,17 @@
 				<td><%= current_member.phone %></td>
 			</tr>
 			<tr>
-				<th style="background-color: #dad7d7; border-bottom: 1px solid #ffff;"></th>
+				<th style="background-color: #dad7d7; border-bottom: 1px solid #ffff;">メールアドレス</th>
 				<td style="border-bottom: 1px solid #dad7d7;"><%= current_member.email %></td>
 			</tr>
 		</tbody>
 		<hr>
-		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">配送先</h4>
+		<h5 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">配送先</h5>
 		<%= link_to addresses_path do %>
 			一覧を見る<span calss="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
 		<hr>
-		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文履歴</h4>
+		<h5 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文履歴</h5>
 		<%= link_to orders_path(id: current_member.id) do %>
 			一覧を見る<span calss="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
