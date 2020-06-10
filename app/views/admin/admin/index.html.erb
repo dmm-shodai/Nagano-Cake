@@ -12,7 +12,7 @@
   <% @members.each do  |member| %>
   <tr>
    <td><%= member.id %></td>
-   <td><%= member.surname %><%= member.name %></td>
+   <td><%= link_to member.surname, admin_admin_path(member.id) %><%= member.name %></td>
    <td><%= member.email %></td>
    <td><%= member.quit %></td></tr>	
   <% end %>

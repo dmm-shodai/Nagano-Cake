@@ -16,5 +16,11 @@ class Admin::AdminController < ApplicationController
 	end
 
 	def update
+		@member = Member.find(params[:id])
 	end
+
+	private
+	def member_params
+		params.require(:member).permit(:surname,:name,:kana_surname,:kana_name,:email,:postal_code,:adress,:phone,:quit)
+    end
 end

@@ -3,34 +3,34 @@
 
 	<br>
 	<h4>登録情報</h4>
-	<%= link_to '登録情報編集', edit_member_path(@members), class:"btn btn-info" %>
-	<%= link_to 'パスワード変更', edit_members_registration_path, class:"btn btn-success" %>
+	<%= link_to '登録情報編集', edit_member_path(current_member), class:"btn btn-info" %>
+	<%= link_to 'パスワード変更', edit_member_registration_path(current_member), class:"btn btn-success" %>
 
 	<table class="table table-condensed">
 		<tbody>
 			<tr>
 				<th style="background-color: #dad7d7; border-bottom: 1px solid #ffff;">氏名</th>
-				<td><%= @members.surname %> <%= @members.name %></td>
+				<td><%= current_member.surname %> <%= current_member.name %></td>
 			</tr>
 			<tr>
 				<th style="background-color: #dad7d7; border-bottom: 1px solid #ffff;">カナ</th>
-				<td><%= @members.kana_surname %> <%= @members.kana_name %></td>
+				<td><%= current_member.kana_surname %> <%= current_member.kana_name %></td>
 			</tr>
 			<tr>
 				<th style="background-color: #dad7d7; border-bottom: 1px solid #ffff;">郵便番号</th>
-				<td><%= @members.postal_code %></td>
+				<td><%= current_member.postal_code %></td>
 			</tr>
 			<tr>
 				<th style="background-color: #dad7d7; border-bottom: 1px solid #ffff;">住所</th>
-				<td><%= @members.address %></td>
+				<td><%= current_member.address %></td>
 			</tr>
 			<tr>
 				<th style="background-color: #dad7d7; border-bottom: 1px solid #ffff;">電話番号</th>
-				<td><%= @members.phone %></td>
+				<td><%= current_member.phone %></td>
 			</tr>
 			<tr>
-				<th style="background-color: #dad7d7; border-bottom: 1px solid #ffff;"></th>
-				<td style="border-bottom: 1px solid #dad7d7;"><%= @members.email %></td>
+				<th style="background-color: #dad7d7; border-bottom: 1px solid #ffff;">メールアドレス</th>
+				<td style="border-bottom: 1px solid #dad7d7;"><%= current_member.email %></td>
 			</tr>
 		</tbody>
 		<hr>
@@ -40,7 +40,7 @@
 		<% end %>
 		<hr>
 		<h4 style="margin-bottom: 20px; border-left: 2px solid #2D6F4C; padding: 10px;">注文履歴</h4>
-		<%= link_to orders_path(id: @members.id) do %>
+		<%= link_to orders_path(id: current_member.id) do %>
 			一覧を見る<span calss="glyphicon glyphicon-chevron-right"></span>
 		<% end %>
 		<hr>
