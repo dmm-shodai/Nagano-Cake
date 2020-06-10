@@ -12,8 +12,8 @@ class Member::MembersController < ApplicationController
 
 	def update
 		@member = current_member
-		@member.update
-		redirect_to
+		@member.update(member_params)
+		redirect_to member_path(@member)
 	end
 
 	def hide

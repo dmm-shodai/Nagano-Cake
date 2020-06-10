@@ -1,12 +1,8 @@
-<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
-			<h2>登録情報編集</h2>
-		</div>
-	</div>
-
-	<div class="row">
-	  <%= form_with(model:@member, url:member_path,local:true) do |form| %>	
+<div class = "container">
+  <div class = "row">
+   <%= @member.surname %><%= @member.name %>さんの会員情報編集<br>
+    会員ID<%= @member.id %><br>
+   <%= form_with(model:@member, url:admin_admin_path,local:true) do |form| %>	
       	<%= form.label :氏名 %>
 		<%= form.text_field :surname %>
 		<%= form.text_field :name %><br>
@@ -21,8 +17,7 @@
         <%= form.text_field :phone %><br>
         <%= form.label :メールアドレス %>
         <%= form.text_field :email %><br>
-　　　　<%= form.submit %>
-
-		<% end %>
-	</div>
+　　　　<%= form.submit %>　　
+	<% end %>
+　</div>
 </div>
