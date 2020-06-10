@@ -18,17 +18,23 @@
           </nav>
           <nav class="site-nav">
             <ul class="nav navbar-nav navbar-right">
-            <% if member_signed_in? %>
-              <p>ようこそ<%= current_member.surname %> <%= current_member.name %>さん</p>
-              <li><%= link_to 'マイページ', member_path(current_member) %></li>
-              <li><%= link_to '商品一覧', items_path %></li>
-              <li><%= link_to 'カート', cart_items_path %></li>
-              <li><%= link_to 'ログアウト', destroy_member_session_path, method: :delete %></li>
-            <% else %>
-              <li><%= link_to '商品一覧', items_path %></li>
-              <li><%= link_to '新規登録', new_member_registration_path %></li>
-              <li><%= link_to 'ログイン', new_member_session_path %></li>
-            <% end %>
+              <% if member_signed_in? %>
+                <p>ようこそ<%= current_member.surname %> <%= current_member.name %>さん</p>
+                <li><%= link_to 'マイページ', member_path(current_member) %></li>
+                <li><%= link_to '商品一覧', items_path %></li>
+                <li><%= link_to 'カート', cart_items_path %></li>
+                <li><%= link_to 'ログアウト', destroy_member_session_path, method: :delete %></li>
+              <% elsif admin_signed_in? %>
+                <li><%= link_to '商品一覧', admin_items_path %></li>
+                <li><%= link_to '会員一覧', '#' %></li>
+                <li><%= link_to '注文履歴一覧', '#' %></li>
+                <li><%= link_to 'ジャンル一覧', admin_genres_path %></li> 
+                <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to '商品一覧', items_path %></li>
+                <li><%= link_to '新規登録', new_member_registration_path %></li>
+                <li><%= link_to 'ログイン', new_member_session_path %></li>
+              <% end %>
             </ul>
           </nav>
       </div>

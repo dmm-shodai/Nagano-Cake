@@ -10,8 +10,19 @@ class ApplicationController < ActionController::Base
 		root_path
 	end
 
+	def hide
+		@member = Member.find(params[:id])
+		@member.destroy
+		redirect_to root_path
+	end
+
 	def configure_permitted_parameters
 		devise_parameter_sanitizer.permit(:sign_up, keys: [:surname, :name, :kana_surname, :kana_name, :email, :postal_code, :address, :phone])
 		devise_parameter_sanitizer.permit(:sign_in, keys: [:email])
+	end
+
+	private
+	def member_params
+		params.require(:member).permit(:surname, :name, :kana_surname, :kana_name, :email, :postal_code, :address, :phone)
 	end
 end

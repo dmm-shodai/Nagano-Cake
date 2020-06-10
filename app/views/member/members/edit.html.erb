@@ -6,8 +6,51 @@
 	</div>
 
 	<div class="row">
-		<%= form_for (current_member) do |f| %>
+		<%= form_for (@member) do |f| %>
+			<div class="form">
+        (<%= f.label :姓 %>)
+        <%= f.text_field :surname, autofocus: true, autocomplete: "surname" %>
+      </div>
 
+      <div class="form">
+        (<%= f.label :名 %>)
+        <%= f.text_field :name, autocomplete: "name" %>
+      </div>
+
+      <div class="form">
+        (<%= f.label :セイ %>)
+        <%= f.text_field :kana_surname, autocomplete: "kana_surname" %>
+      </div>
+
+      <div class="form">
+        (<%= f.label :メイ %>)
+        <%= f.text_field :kana_name, autocomplete: "kana_name" %>
+      </div>
+
+      <div class="form">
+        <%= f.label :メールアドレス %>
+        <%= f.email_field :email, autocomplete: "email" %>
+      </div>
+
+      <div class="form">
+        <%= f.label :郵便番号（ハイフンなし） %>
+        <%= f.text_field :postal_code, autofocus: "postal_code" %>
+      </div>
+
+      <div class="form">
+        <%= f.label :住所 %>
+        <%= f.text_field :address, autofocus: "address" %>
+      </div>
+
+      <div class="form">
+        <%= f.label :電話番号（ハイフンなし） %>
+        <%= f.text_field :phone, autofocus: "phone" %>
+      </div>
+
+      <div class="text-center">
+        <%= f.submit "編集内容を保存する", class: "btn btn-success" %>  
+      </div>
 		<% end %>
+	  <div><%= link_to '退会する', confirm_path, class: "btn btn-danger" %></div>
 	</div>
 </div>

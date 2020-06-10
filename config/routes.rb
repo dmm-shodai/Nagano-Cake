@@ -23,6 +23,7 @@ scope module: 'member' do
 
 	resources :members, only: [:show, :edit, :destroy, :update]
 	root :to => 'members#top'
+  get 'confirm' => 'members#confirm'
 end
 
 

@@ -12,12 +12,19 @@ class Member::MembersController < ApplicationController
 
 	def update
 		@member = current_member
-		@member.update
-		redirect_to
+		if @member.update(member_params)
+			redirect_to member_path(current_member)
+		else
+			render :edit
+		end
+	end
+
+	def confirm
+		@member = current_member
 	end
 
 	def hide
-		@member = current_member
+		@member = Member.find(params[:id])
 		@member.destroy
 		redirect_to root_path
 	end
