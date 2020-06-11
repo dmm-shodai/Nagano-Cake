@@ -19,9 +19,10 @@ scope module: 'member' do
 	resources :items, only:[:index, :show]
   delete '/cart_items/destroy_all' => 'cart_items#destroy_all'
 	resources :cart_items, only:[:create, :update, :index, :destroy]
-  resources :orders, only:[:new, :index, :show, :create]
   post '/orders/confirm' => 'orders#confirm'
   get '/orders/thanks' => 'orders#thanks'
+  resources :orders, only:[:new, :index, :show, :create]
+
 
 
 	resources :members, only: [:show, :edit, :destroy, :update]
@@ -37,6 +38,3 @@ namespace :admin do
   get 'top' => 'admin#top'
 end
 end
-
-
-# rails ルーティング　controller 検索

@@ -1,10 +1,10 @@
 class Member::CartItemsController < ApplicationController
+	before_action :authenticate_member!
 
 	def create
 		@cart_item = CartItem.new(cart_item_params)
 		@cart_item.member_id = current_member.id
 		@cart_item.save
-		# if文で分岐させる
 		redirect_to cart_items_path
 	end
 

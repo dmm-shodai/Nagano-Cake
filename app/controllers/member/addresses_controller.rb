@@ -1,18 +1,18 @@
 class Member::AddressesController < ApplicationController
-	# before_action :authenticate_user!
-    # before_action :correct_book, only: [:edit, :update]
-    # memberと紐付けしてから上記追加　0606minowa
+	before_action :authenticate_member!
+    before_action :correct_book, only: [:edit, :update]
+
 
 	def index
 		@address = Address.new
-		@addresses = Address.all
-		# @addressedit = Address.find(params[:id])
+		@addresses = current_member.addresses
 	end
 
 	def create
 		@address = Address.new(address_params)
+		@address.member_id = current_member.id
 		if @address.save
-		   redirect_to addresses_path(@address), notice: "successfully created Address!"
+		   redirect_to addresses_path, notice: "successfully created Address!"
 	    else
 	    	@addresses = Address.all
 	    	render :index
@@ -41,7 +41,7 @@ class Member::AddressesController < ApplicationController
 	private
 
   def address_params
-  	params.require(:address).permit(:postal_code, :address, :address_name)
+  	params.require(:address).permit(:postal_code, :address, :address_name, :member_id)
   end
 
 end
