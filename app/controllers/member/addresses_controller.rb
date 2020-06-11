@@ -1,12 +1,11 @@
 class Member::AddressesController < ApplicationController
-	# before_action :authenticate_user!
-    # before_action :correct_book, only: [:edit, :update]
-    # memberと紐付けしてから上記追加　0606minowa
+	before_action :authenticate_member!
+    before_action :correct_book, only: [:edit, :update]
+
 
 	def index
 		@address = Address.new
 		@addresses = current_member.addresses
-		# @addressedit = Address.find(params[:id])
 	end
 
 	def create

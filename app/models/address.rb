@@ -6,7 +6,7 @@ class Address < ApplicationRecord
 	validates :address, presence: true
 	validates :address_name, presence: true
 
-	# 住所＋郵便番号＋氏名　つなげるメゾットを作成する
+
 	def full_address
 		self.postal_code + self.address + self.address_name
 	end

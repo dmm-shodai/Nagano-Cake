@@ -1,0 +1,16 @@
+<div class = "container">
+  <div class = "row">
+   会員詳細<br>
+
+   顧客ID<%= @member.id %><br>
+   氏名<%= @member.surname %><%= @member.name %><br>
+   フリガナ<%= @member.kana_surname %><%= @member.kana_name %><br>
+   郵便番号<%= @member.postal_code %><br>
+   住所<%= @member.address %><br>
+   電話番号<%= @member.phone %><br>
+   メールアドレス<%= @member.email %><br>
+   
+     <%= link_to "編集する", edit_admin_admin_path(@member.id) %>
+
+ </div>
+</div>

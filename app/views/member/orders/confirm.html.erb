@@ -1,5 +1,78 @@
 
+<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+			<h2>注文情報確認</h2>
 
-<P><%= @address.postal_code %></P>
-<P><%= @address.address %></P>
-<P><%= @address.address_name %></P>
+			<div class="row">
+				<div class="col-xs-8">
+					<table class="table table-hover table-inverse" border="1" style="border-collapse: collapse">
+						<thead>
+							<tr>
+								<th colspan="4">商品名</th>
+								<th>単価（税込）</th>
+								<th>数量</th>
+								<th>小計</th>
+							</tr>
+						</thead>
+						<tbody>
+							<% @cart_items.each do |cart_item| %>
+							<tr>
+								<td colspan="4">
+									<%= attachment_image_tag cart_item.item, :item_image, :fill, 50, 50,format: 'jpeg' %>
+									<%= cart_item.item.item_name %>
+								</td>
+								<td><%= cart_item.item.price %></td>
+								<td><%= cart_item.number %></td>
+								<td><%= cart_item.item.price * cart_item.number %></td>
+							</tr>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+
+
+				<div class="col-xs-4">
+					<table class="table table-hover table-inverse" border="1" style="border-collapse: collapse">
+						<tbody>
+							<% @sum = 0 %>
+							<tr>
+								<th>送料</th>
+								<td>800</td>
+							　　　 </tr>
+							<tr>
+								<th>商品合計</th>
+								<td><%= @total_price %></td>
+							</tr>
+							<tr>
+								<% @sum = @total_price + 800 %>
+								<th>請求金額</th>
+								<td><%= @sum %></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+				<div class="row">
+					<table class="table table-condensed">
+						<tbody>
+							<tr>
+								<th><strong>支払方法</strong></th>
+								<td><%= session[:order]["payment"] %></td>
+							　　　 </tr>
+							<tr>
+								<th>お届け先</th>
+								<td><%= @address.postal_code %><%= @address.address %><br />
+									<%= @address.address_name %></td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+
+					<div class="row">
+						<%= link_to "購入を確定する", orders_path, method: :post ,class: "btn-sm btn-success" %>
+			        </div>
+				</div>
+			</div>
+		</div>
