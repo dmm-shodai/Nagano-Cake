@@ -14,7 +14,11 @@
    <td><%= member.id %></td>
    <td><%= link_to member.surname, admin_admin_path(member.id) %><%= member.name %></td>
    <td><%= member.email %></td>
-   <td><%= member.quit %></td></tr>	
+   <td><% if member.quit %>
+        有効
+       <% else %>
+        退会済み
+       <% end %></td></tr>	
   <% end %>
  </tbody>
 </table>

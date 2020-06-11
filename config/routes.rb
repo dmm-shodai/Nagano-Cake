@@ -35,6 +35,6 @@ namespace :admin do
 	resources :genres,only: [:index,:create,:edit,:update]
 	resources :items,only: [:index,:new,:create,:show,:edit,:update]
   resources :admin, only:[:index,:show,:edit,:update]
-
+  get 'top' => 'admin#top'
 end
 end

@@ -1,22 +1,36 @@
 class Admin::AdminController < ApplicationController
 
 	def top
+		range = Date.today.beginning_of_day..Date.today.end_of_day
+        @todayorder = Order.where(created_at: range).count
+
 	end
 
 	def index
-		@members = Member.all
+		@members = Member.with_deleted.all
 	end
 
 	def show
-		@member = Member.find(params[:id])
+		@member = Member.with_deleted.find(params[:id])
 	end   
 
 	def edit 
-		@member = Member.find(params[:id])
+		@member = Member.with_deleted.find(params[:id])
 	end
 
 	def update
-		@member = Member.find(params[:id])
+		@member = Member.with_deleted.find(params[:id])
+		if @member.update(member_params)
+		 if   @member.quit == true
+		      @member.restore
+		      redirect_to admin_admin_index_path
+	     else @member.quit == false 
+	          @member.destroy
+	          redirect_to admin_admin_index_path
+	     end
+	     else render "edit"
+	    end
+
 	end
 
 	private
