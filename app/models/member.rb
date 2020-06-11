@@ -6,13 +6,16 @@ class Member < ApplicationRecord
 
   has_many :addresses
   has_many :cart_items
+  has_many :orders
 
   def exist_items?(item)
   	cart_items.exists?(item_id: item.id)
   end
-  # ヘルパーメゾット：exists? true or folseで（）の中の値が左辺のcart_itemsの中にあるか判断する
 
 
+def full_name
+    self.surname + self.name
+  end
 
   acts_as_paranoid
 
