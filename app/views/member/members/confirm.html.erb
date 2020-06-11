@@ -9,8 +9,8 @@
 				退会する場合は、「退会する」をクリックしてください。
 			</p>
 			<br>
-			<div><%= link_to '退会しない', member_path(current_member.id, class: "btn btn-info") %></div>
-			<div><%= link_to '退会する', member_path(@member), class: "btn btn-danger", method: :delete %></div>
+			<div><%= link_to '退会しない', member_path(current_member.id), class: "btn btn-info" %></div>
+			<div><%= link_to '退会する', hide_path(current_member.id), class: "btn btn-danger", method: :delete %></div>
 		</div>
 	</div>
 </div>
