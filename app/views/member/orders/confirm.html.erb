@@ -39,7 +39,7 @@
 							<tr>
 								<th>送料</th>
 								<td>800</td>
-							　　　 </tr>
+							 </tr>
 							<tr>
 								<th>商品合計</th>
 								<td><%= @total_price %></td>
@@ -60,7 +60,7 @@
 							<tr>
 								<th><strong>支払方法</strong></th>
 								<td><%= session[:order]["payment"] %></td>
-							　　　 </tr>
+							 </tr>
 							<tr>
 								<th>お届け先</th>
 								<td><%= @address.postal_code %><%= @address.address %><br />
@@ -73,6 +73,10 @@
 					<div class="row">
 						<%= link_to "購入を確定する", orders_path, method: :post ,class: "btn-sm btn-success" %>
 			        </div>
+
+			        <div class="row">
+					<%= link_to "注文情報入力へ戻る",new_order_path, class: "btn-sm btn-primary" %>
+				    </div>
 				</div>
 			</div>
 		</div>

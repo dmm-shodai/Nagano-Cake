@@ -22,9 +22,6 @@ scope module: 'member' do
   post '/orders/confirm' => 'orders#confirm'
   get '/orders/thanks' => 'orders#thanks'
   resources :orders, only:[:new, :index, :show, :create]
-
-
-
 	resources :members, only: [:show, :edit, :update]
   root :to => 'members#top'
   get 'confirm' => 'members#confirm'
