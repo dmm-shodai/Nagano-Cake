@@ -1,6 +1,7 @@
 class Member::MembersController < ApplicationController
 	def top
 		@items = Item.all
+		@jenres = Genre.all
 	end
 
 	def show

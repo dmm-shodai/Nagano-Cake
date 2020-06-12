@@ -1,32 +1,27 @@
+<br>
 <div class="container">
 	<div class="row">
-			<div class="col-xs-4">
-				<h2>ジャンル検索</h2>
-				<ul>
+		<div class="col-3" style="border: 1px solid #C0C0C0; padding: 10px; margin-top: 40px; height: auto;">
+			<h5 style="text-align: center;">ジャンル検索</h5>
+			<hr>
+			<ul>
 				<% @genres.each do |genre| %>
-				<li>
-					<%= genre.genre_name %>
-				</li>
+				<li><%= genre.genre_name %></li>
 				<% end %>
 			</ul>
-			</div>
-
-　　　　　　<div class="row">
-			<div class="col-xs-8">
-				<h2>商品一覧</h2><p>(全<%= @items.count %>件)</p>
-				<div class="item">
-					<div class="itemlist">
-						<dl>
-							<% @items.each do |item| %>
-							<dd><%= attachment_image_tag(item, :item_image, size: "100x100", format: 'jpeg') %></dd>
-							<dt><%= link_to item.item_name,item_path(item) %></dt>
-							<dd><%= item.price %></dd>
-							<% end %>
-						</dl>
-					</div>
+		</div>
+		<div class="col-9">
+			<h5>商品一覧</h5><p>(全<%= @items.count %>件)</p>
+			<div style="display: flex;">
+				<% @items.each do |item| %>
+				<div style="border: 1px solid #C0C0C0; padding: 5px; margin: 5px;">
+					<%= attachment_image_tag item, :item_image, size: "100x100", fallback: "no_image.jpg" %><br>
+					<%= link_to item.item_name, item_path(item.id) %><br>
+					<%= item.price %>
 				</div>
+				<% end %>
 			</div>
-		  </div>
-		<%= paginate @items %>
+		</div>
 	</div>
+	<%= paginate @items %>
 </div>
