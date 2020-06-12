@@ -19,10 +19,9 @@ class Member::OrdersController < ApplicationController
 		session[:order].clear
 		@order.postage = 800
 		@order.order_status = 0
-		# current_member.cart_items.each do |cart_item|
-		# 	@order.bill += bill商品テーブルの税込み?価格*カート内商品個数
-		# end
-		# 合憲金額出す
+		current_member.cart_items.each do |cart_item|
+			@order.bill = cart_item.item.price * cart_item.number
+		end
 		@order.save
 		current_member.cart_items.each do |cart_item|
 			order_item = OrderItem.new(
