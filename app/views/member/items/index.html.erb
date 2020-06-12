@@ -18,7 +18,7 @@
 					<div class="itemlist">
 						<dl>
 							<% @items.each do |item| %>
-							<dd><%= attachment_image_tag(item, :item_image, :fill,100,100,format: 'jpeg') %></dd>
+							<dd><%= attachment_image_tag(item, :item_image, size: "100x100", format: 'jpeg') %></dd>
 							<dt><%= link_to item.item_name,item_path(item) %></dt>
 							<dd><%= item.price %></dd>
 							<% end %>
