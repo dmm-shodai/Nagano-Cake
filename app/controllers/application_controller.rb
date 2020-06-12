@@ -5,8 +5,10 @@ class ApplicationController < ActionController::Base
 	protected
 	def after_sign_in_path_for(resource)
 		case resource
-		when Member
-			 items_path
+
+		when Members
+			items_path
+
 	    when Admin
 	    	 admin_top_path
 	    end
