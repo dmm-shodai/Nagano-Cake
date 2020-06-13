@@ -1,33 +1,38 @@
 <div class = "container">
   <div class = "row">
-  	商品編集
-<%= form_for(@item, url:admin_item_path) do|f| %>
-  <%= f.label :商品画像 %>
-     <%= attachment_image_tag @item, :item_image, :fill, 100, 100, fallback: "download.jpg"%>
-	 <%= f.attachment_field :item_image %>
-  <div class="col-xs-9">
-	 <div>	<%= f.label :商品名 %>
-		<%= f.text_field :item_name %>
-	 </div>
-
-	 <div class="field row">
-		<%= f.label :商品説明 %> 
-		<%= f.text_area :item_profile %>
-	 </div>
-	 <div class="field row">
-　　　　　<%= f.label :ジャンル %>
-	 　　<%= f.collection_select(:genre_id, Genre.all, :id, :genre_name) %>
-     </div>
-     <div class="field row">
-     	<%= f.label :税抜き価格 %>
-     	<%= f.text_field :price %>
-     </div>
-     <div class="field row">
-　　　　　<%= f.label :販売ステータス %>
-	 　　<%= f.select :sale_status, [["販売中", true], ["販売停止中", false]] %>
-     </div>
-　　　</div>
-		<%= f.submit %>
+    <div class = "col-md-3" >
+  	 商品編集
+     <li>
+     <%= form_for(@item, url:admin_item_path) do|f| %>
+      <%= attachment_image_tag @item, :item_image, :fill, 150, 150, fallback: "download.jpg"%><br>
+	    <%= f.attachment_field :item_image %>
+     </li>
+    </div>
+  <div class="col-md-9">
+    <table class = 'table'>
+     <tr>
+      <th><%= f.label :商品名 %></th>
+		  <td><%= f.text_field :item_name %></td>
+     </tr>
+     <tr>
+      <th><%= f.label :商品説明 %></th>
+      <td><%= f.text_area :item_profile %></td>
+     </tr>
+     <tr>
+　　　  <th><%= f.label :ジャンル %></th>
+	 　　 <td><%= f.collection_select(:genre_id, Genre.all, :id, :genre_name) %></td>
+     </tr>
+     <tr>
+     	<th><%= f.label :税抜き価格 %></th>
+     	<td><%= f.text_field :price %>円</td>
+     </tr>
+　　　<tr>
+　　　　<th><%= f.label :販売ステータス %></th>
+	 　　<td><%= f.select :sale_status, [["販売中", true], ["販売停止中", false]] %></td>
+     </tr>
+		   <th><%= f.submit :変更を保存する,class: "btn btn-primary"%></th>
+  </ul>
+</table>
   <% end %>
  </div>
 </div>
