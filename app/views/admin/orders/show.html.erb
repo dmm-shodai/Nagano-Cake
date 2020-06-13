@@ -23,8 +23,12 @@
 									<td colspan="9"><%= @order.payment %></td>
 								</tr>
 								<tr>
-									<th colspan="3">注文ステータス</th>
-									<td colspan="9"><%= @order.order_status %></td>
+									<%= form_for(@order, url:admin_order_path) do |f| %>
+									<th colspan="3"><%= f.label :注文ステータス %></th>
+									<td colspan="9"><%= f.select :order_status, [["入金待ち","入金待ち"], ["入金確認", "入金確認"], ["製作中","製作中"], ["発送準備中", "発送準備中"], ["発送済み", "発送済み"]] %>
+										<%= f.submit :更新 %>
+										</td>
+									<% end %>
 								</tr>
 							</tbody>
 						</table>
@@ -59,17 +63,29 @@
 						<table class="table table-hover table-inverse" border="1" style="border-collapse: collapse">
 							<thead>
 								<tr>
-									<th colspan="6">商品</th>
-									<th colspan="2">単価（税込）</th>
-									<th>個数</th>
-									<th>小計</th>
-								</tr>
+								   <th>商品名</th>
+								   <th>単価(税込)</th>
+								   <th>数量</th>
+								   <th>小計</th>
+								   <th>制作ステータス</th>
+								 </tr>
 							</thead>
 							<tbody>
-								<td colspan="6"></td>
-								<td colspan="2"></td>
-								<td></td>
-								<td></td>
+								<% @order_items.each do |order_item| %>
+								 <tr>
+									<td></td>
+									<td><%= order_item.price %></td>
+									<td><%= order_item.number %></td>
+									<td><%= order_item.price * order_item.number %></td>
+							        <td><%= form_for(order_item, url:admin_order_item_path(order_item)) do |f| %> 
+							        	<%= f.select :production_status, [["着手不可", "着手不可"], ["制作待ち", "制作待ち"], ["製作中","製作中"], ["制作完了", "制作完了"]]  %>
+										<%= f.submit :更新 %>
+										 <% end %>
+									</td>
+								 </tr>	   
+							    <% end %>
+
+
 								<!-- 各項目記載する -->
 							</tbody>
 						</table>

@@ -22,12 +22,10 @@ scope module: 'member' do
   post '/orders/confirm' => 'orders#confirm'
   get '/orders/thanks' => 'orders#thanks'
   resources :orders, only:[:new, :index, :show, :create]
-
-
-
-	resources :members, only: [:show, :edit, :destroy, :update]
-
-	root :to => 'members#top'
+	resources :members, only: [:show, :edit, :update]
+  root :to => 'members#top'
+  get 'confirm' => 'members#confirm'
+  delete '/members/:id' => 'members#hide',as: :hide
 end
 
 
@@ -36,6 +34,7 @@ namespace :admin do
 	resources :items,only: [:index,:new,:create,:show,:edit,:update]
   resources :admin, only:[:index,:show,:edit,:update]
   resources :orders,only:[:index,:show,:update]
+  resources :order_items,only:[:update]  
   get 'top' => 'admin#top'
 end
 end

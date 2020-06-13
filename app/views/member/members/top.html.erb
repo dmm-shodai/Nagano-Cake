@@ -1,26 +1,38 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-3">
+	<div class="row justify-content-md-center">
+		<div class="col-3" style="border: 1px solid #C0C0C0; padding: 10px; margin-top: 40px;">
+			<h5 style="text-align: center;">ジャンル検索</h5>
+			<hr>
+			<ul>
+				<% @jenres.each do |jenre| %>
+				<li><%= jenre.genre_name %></li>
+				<% end %>
+			</ul>
 		</div>
-		<div class="col-xs-9">
-			<div class="infomation-box text-center">
-				<p>ようこそ、NaganoCakeへ！<br>
-					このサイトは、ケーキ販売のECサイトになります。<br>
-					会員でない方も商品の閲覧はできますが、<br>
-					購入には会員登録が必要にあります。
-				</p>
-			</div>
-			<div class="items-box">
-				<h1>オススメ商品</h1>
-				<div class="items">
-					<% @items.each do |item| %>
-						<%= attachment_image_tag item, :item_image, size: "50x70", fallback: "no_image.jpg" %>
-						<p><%= item.item_name %></p>
-						<p><%= item.price %></p>
-					<% end %>
+		<div class="col-6" style="margin-top: 20px;">
+			<p style="border: 1px solid #000; padding: 10px; margin: 20px; text-align: center;">ようこそ、NaganoCakeへ！<br>
+				このサイトは、ケーキ販売のECサイトになります。<br>
+				会員でない方も商品の閲覧はできますが、<br>
+				購入には会員登録が必要にあります。
+			</p>
+		</div>
+		<div class="col-3"></div>
+	</div>
+	<div class="row justify-content-center">
+		<div class="col-3"></div>
+		<div class="col-9">
+			<h5>オススメ商品</h5>
+			<div style="display: flex;">
+				<% @items.each do |item| %>
+				<div style="border: 1px solid #C0C0C0; padding: 5px; margin: 5px;">
+					<%= attachment_image_tag item, :item_image, size: "100x100", fallback: "no_image.jpg" %><br>
+					<%= link_to item.item_name, item_path(item.id) %><br>
+					<%= item.price %>
 				</div>
-				<%= link_to 'もっと見る', items_path %>
+				<% end %>
 			</div>
+			<br>
+				<%= link_to 'もっと見る', items_path %>
 		</div>
 	</div>
 </div>

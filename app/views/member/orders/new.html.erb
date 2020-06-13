@@ -8,7 +8,7 @@
 				<h4><strong>支払い方法</strong></h4>
 				<div>
 				<label>
-					<%= f.radio_button :payment, "クレジットカード" %>クレジットカード
+					<%= f.radio_button :payment, "クレジットカード" , {:checked => true} %>クレジットカード
 				</label><br />
 			    </div>
 
@@ -22,8 +22,8 @@
 			<div class="address">
 				<h4><strong>お届け先</strong></h4>
 				<div>
-					<label>
-						<%= f.radio_button :add, "ご自身の住所" %>ご自身の住所
+					<label >
+						<%= f.radio_button :add, "ご自身の住所" , {:checked => true} %>ご自身の住所
 						<p><%= current_member.postal_code %><%= current_member.address %></p>
 						<P><%= current_member.surname %><%= current_member.name %></P>
 					</label><br />
