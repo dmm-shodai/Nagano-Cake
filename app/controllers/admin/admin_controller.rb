@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
-
+    before_action :authenticate_admin!
 	def top
 		range = Date.today.beginning_of_day..Date.today.end_of_day
         @todayorder = Order.where(created_at: range).count
@@ -35,6 +35,6 @@ class Admin::AdminController < ApplicationController
 
 	private
 	def member_params
-		params.require(:member).permit(:surname,:name,:kana_surname,:kana_name,:email,:postal_code,:adress,:phone,:quit)
+		params.require(:member).permit(:surname,:name,:kana_surname,:kana_name,:email,:postal_code,:address,:phone,:quit)
     end
 end
