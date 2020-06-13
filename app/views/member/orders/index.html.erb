@@ -22,7 +22,11 @@
 				  <td colspan="4"><p><%= order.postal_code %></p>
 				             	  <p><%= order.address %></p>
 				  	              <p><%= order.address_name %></p></td>
-				  <td colspan="2"></td>
+				  <td colspan="2">
+				  	<% order.order_items.each do |orderitem| %>
+				  	<%= orderitem.item.item_name %>
+				  	<% end %>
+				  </td>
 				  <!-- 商品名入れる -->
 
 				  <td colspan="1"><%= order.bill + order.postage %></td>

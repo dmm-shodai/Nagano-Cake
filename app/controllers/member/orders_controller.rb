@@ -29,6 +29,7 @@ class Member::OrdersController < ApplicationController
 				number: cart_item.number,
 				price: cart_item.item.price,
 				production_status: 0,
+				item_id: cart_item.item_id
 			)
 			order_item.save
 		end

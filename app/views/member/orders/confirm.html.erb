@@ -22,7 +22,7 @@
 									<%= attachment_image_tag cart_item.item, :item_image, size: "50x50",format: 'jpeg' %>
 									<%= cart_item.item.item_name %>
 								</td>
-								<td><%= cart_item.item.price %></td>
+								<td><%= (cart_item.item.price * 1.1).round  %></td>
 								<td><%= cart_item.number %></td>
 								<td><%= cart_item.item.price * cart_item.number %></td>
 							</tr>
@@ -63,8 +63,8 @@
 							 </tr>
 							<tr>
 								<th>お届け先</th>
-								<td><%= @address.postal_code %><%= @address.address %><br />
-									<%= @address.address_name %></td>
+								<td><%= @order.postal_code %><%= @order.address %><br />
+									<%= @order.address_name %></td>
 								</tr>
 							</tbody>
 						</table>
