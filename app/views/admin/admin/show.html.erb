@@ -1,16 +1,30 @@
 <div class = "container">
   <div class = "row">
    会員詳細<br>
-
-   顧客ID<%= @member.id %><br>
-   氏名<%= @member.surname %><%= @member.name %><br>
-   フリガナ<%= @member.kana_surname %><%= @member.kana_name %><br>
-   郵便番号<%= @member.postal_code %><br>
-   住所<%= @member.address %><br>
-   電話番号<%= @member.phone %><br>
-   メールアドレス<%= @member.email %><br>
-   
-     <%= link_to "編集する", edit_admin_admin_path(@member.id) %>
+   <table class = 'table'>
+      <tr>
+        <th>顧客ID</th><td><%= @member.id %></td>
+      </tr>
+      <tr>
+        <th>氏名</th><td><%= @member.surname %><%= @member.name %></td>
+      </tr>
+      <tr>
+        <th>フリガナ</th><td><%= @member.kana_surname %><%= @member.kana_name %></td>
+      </tr>
+      <tr>
+        <th>郵便番号</th><td><%= @member.postal_code %></td>
+      </tr>
+      <tr>
+        <th>住所</th><td><%= @member.address %></td>
+      </tr>
+      <tr>
+        <th>電話番号</th><td><%= @member.phone %></td>
+      </tr>
+      <tr>
+        <th>メールアドレス</th><td><%= @member.email %></td>
+      </tr>
+    </table>
+       <%= link_to "編集する", edit_admin_admin_path(@member.id),class: "btn btn-primary"  %>
 
  </div>
 </div>

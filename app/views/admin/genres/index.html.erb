@@ -9,7 +9,7 @@
     <%= form.label :genre_status, "有効", {value: :true, style: "display: inline-block;"} %>
     <%= form.radio_button :genre_status, :false %>
     <%= form.label :genre_status, "無効", {value: :false, style: "display: inline-block;"} %>
-    <%= form.submit :追加  %>
+    <%= form.submit :追加,class: "btn btn-primary"  %>
   <% end %>
    
    <table class = 'table'>
@@ -30,7 +30,7 @@
       <% else %>
         無効
       <% end %></td>
-      <td><%= link_to "編集" ,edit_admin_genre_path(genre.id) %></td>
+      <td><%= link_to "編集" ,edit_admin_genre_path(genre.id), class: "btn btn-primary"%></td>
     </tr>
     <% end %>
   </tbody>
