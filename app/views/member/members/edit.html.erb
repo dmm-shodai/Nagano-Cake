@@ -1,56 +1,41 @@
+<br>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-12">
-			<p>登録情報編集</p>
-		</div>
+			<h5>登録情報編集</h5>
 	</div>
 
 	<div class="row">
 		<%= form_for (@member) do |f| %>
-			<div class="form">
-        (<%= f.label :姓 %>)
-        <%= f.text_field :surname, autofocus: true, autocomplete: "surname" %>
-      </div>
-
-      <div class="form">
-        (<%= f.label :名 %>)
-        <%= f.text_field :name, autocomplete: "name" %>
-      </div>
-
-      <div class="form">
-        (<%= f.label :セイ %>)
-        <%= f.text_field :kana_surname, autocomplete: "kana_surname" %>
-      </div>
-
-      <div class="form">
-        (<%= f.label :メイ %>)
-        <%= f.text_field :kana_name, autocomplete: "kana_name" %>
-      </div>
-
-      <div class="form">
-        <%= f.label :メールアドレス %>
-        <%= f.email_field :email, autocomplete: "email" %>
-      </div>
-
-      <div class="form">
-        <%= f.label :郵便番号 %>(ハイフンなし)
-        <%= f.text_field :postal_code, autofocus: "postal_code" %>
-      </div>
-
-      <div class="form">
-        <%= f.label :住所 %>
-        <%= f.text_field :address, autofocus: "address" %>
-      </div>
-
-      <div class="form">
-        <%= f.label :電話番号（ハイフンなし） %>
-        <%= f.text_field :phone, autofocus: "phone" %>
-      </div>
+    <table class="table table-condensed">
+      <tr>
+        <th><%= f.label :名前 %> (<%= f.label :姓 %>) (<%= f.label :名 %>)</th>
+        <td><%= f.text_field :surname, autofocus: true, autocomplete: "surname" %> <%= f.text_field :name, autocomplete: "name" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :フリガナ %> (<%= f.label :セイ %>) (<%= f.label :メイ %>)</th>
+        <td><%= f.text_field :kana_surname, autocomplete: "kana_surname" %> <%= f.text_field :kana_name, autocomplete: "kana_name" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :メールアドレス %></th>
+        <td><%= f.email_field :email, autocomplete: "email" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"郵便番号(ハイフンなし)" %></th>
+        <td><%= f.text_field :postal_code, autocomplete: "postal_code" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :住所 %></th>
+        <td><%= f.text_area :address, autocomplete: "address" %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :"電話番号(ハイフンなし)" %></th>
+        <td><%= f.telephone_field :phone, autocomplete: "phone" %></td>
+      </tr>
+    </table>
 
       <div class="text-center">
-        <%= f.submit "編集内容を保存する", class: "btn btn-success" %>  
+        <%= f.submit "編集内容を保存する", class: "btn btn-success" %> <%= link_to '退会する', confirm_path, class: "btn btn-danger" %>
       </div>
 		<% end %>
-	  <div><%= link_to '退会する', confirm_path, class: "btn btn-danger" %></div>
 	</div>
 </div>

@@ -1,21 +1,17 @@
+<br>
 <div class="container">
 	<div class="row">
-		<div class="col-xs-4">
-			<h2>ジャンル検索</h2>
+		<div class="col-3" style="border: 1px solid #C0C0C0; padding: 10px; margin-top: 40px; height: auto;">
+			<h5 style="text-align: center;">ジャンル検索</h5>
+			<hr>
 			<ul>
 				<% @genres.each do |genre| %>
-				<li>
-					<%= genre.genre_name %>
-				</li>
+				<li><%= genre.genre_name %></li>
 				<% end %>
 			</ul>
 		</div>
-
-		<div class="row">
-			<div class="col-xs-3">
-				<%= attachment_image_tag @item, :item_image, size: "100x100", format: 'jpeg' %>
-			</div>
-			<div class="col-xs-5">
+		<div class="col">
+				<%= attachment_image_tag @item, :item_image, size: "200x200", format: 'jpeg' %>
 				<ul>
 					<li><%= @item.item_name %></li>
 					<li><%= @item.item_profile %></li>

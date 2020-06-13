@@ -1,4 +1,4 @@
-
+<br>
 <div class="container">
 	<div class="row">
 		<div class="col-xs-12">
@@ -63,7 +63,8 @@
 							 </tr>
 							<tr>
 								<th>お届け先</th>
-								<td><%= @address.postal_code %><%= @address.address %><br />
+								<td><% if 'ご自身の住所' else 'それ以外' %>
+									<%= @address.postal_code %><%= @address.address %><br />
 									<%= @address.address_name %></td>
 								</tr>
 							</tbody>

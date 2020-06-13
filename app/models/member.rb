@@ -19,5 +19,12 @@ def full_name
 
   acts_as_paranoid
 
+validates :surname, presence: true
+validates :name, presence: true
+validates :kana_surname, presence: true
+validates :kana_name, presence: true
+validates :postal_code, presence: true, length: { is: 7 }
+validates :address, presence: true
+validates :phone, presence: true, length: { minimum: 8 }
 
 end
