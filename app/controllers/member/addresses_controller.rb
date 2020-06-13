@@ -1,7 +1,5 @@
 class Member::AddressesController < ApplicationController
 	before_action :authenticate_member!
-    before_action :correct_book, only: [:edit, :update]
-
 
 	def index
 		@address = Address.new
